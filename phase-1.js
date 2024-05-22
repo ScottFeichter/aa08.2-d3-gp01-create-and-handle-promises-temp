@@ -1,5 +1,3 @@
-setTimeout(() => {console.log("first timeout");}, 1000);
-
 function stretch() {
   // Your code here
   return new Promise((resolve, reject) => {
@@ -16,7 +14,7 @@ function runOnTreadmill() {
     setTimeout(()=> {
       console.log("done treadmill");
       resolve();
-    }, 500);
+    }, 1000);
   });
 }
 
@@ -26,16 +24,18 @@ function liftWeights() {
     setTimeout(()=> {
       console.log("done weights");
       resolve();
-    }, 2000);
+    }, 200);
   });
 }
 
 function workout() {
   // Your code here
   stretch()
-    .then(()=> runOnTreadmill())
-    .then(()=> liftWeights())
-    .then(()=> console.log("done working out"));
+    .then(runOnTreadmill)
+    .then(liftWeights)
+    .then(()=> console.log("done working out")); // must be wrapped!!!
+
+
 }
 
 /* ============================ TEST YOUR CODE ============================
