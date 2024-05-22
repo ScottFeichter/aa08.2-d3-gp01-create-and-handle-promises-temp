@@ -2,35 +2,40 @@ setTimeout(() => {console.log("first timeout");}, 1000);
 
 function stretch() {
   // Your code here
-
   return new Promise((resolve, reject) => {
-    resolve(setTimeout(() => {console.log("done stretching");}, 1000));
-    reject(console.log("strech promise rejected"));
+    setTimeout(()=> {
+      console.log("done stretching");
+      resolve();
+    }, 1000);
   });
 }
 
 function runOnTreadmill() {
   // Your code here
   return new Promise((resolve, reject) => {
-    resolve(setTimeout(() => {console.log("done running on treamill");}, 500));
-    reject(console.log("run promise rejected"));
+    setTimeout(()=> {
+      console.log("done treadmill");
+      resolve();
+    }, 500);
   });
 }
 
 function liftWeights() {
   // Your code here
   return new Promise((resolve, reject) => {
-    resolve(setTimeout(() => {console.log("done lifting weights")}, 2000));
-    reject(console.log("lift promise rejected"));
+    setTimeout(()=> {
+      console.log("done weights");
+      resolve();
+    }, 2000);
   });
 }
 
 function workout() {
   // Your code here
   stretch()
-    .then(runOnTreadmill())
-    .then(liftWeights())
-    .then(console.log("done working out"));
+    .then(()=> runOnTreadmill())
+    .then(()=> liftWeights())
+    .then(()=> console.log("done working out"));
 }
 
 /* ============================ TEST YOUR CODE ============================
